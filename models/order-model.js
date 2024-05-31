@@ -38,22 +38,22 @@ const OrderSchema = new Schema(
       default: 0.0,
     },
 
-    taxPrice: {
-      type: Number,
-      required: true,
-      default: 0.0,
-    },
-
     shippingPrice: {
       type: Number,
       required: true,
-      default: 0.0,
+      default: 200,
     },
 
     totalPrice: {
       type: Number,
       required: true,
       default: 0.0,
+    },
+
+    taxPrice: {
+      type: Number,
+      required: true,
+      default: 0,
     },
 
     /*isPaid: {

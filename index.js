@@ -5,7 +5,7 @@ const app = express();
 
 import AuthenticationRouter from "./routers/authentication-router.js";
 import CartRouter from "./routers/cart-router.js";
-import OrderRouter from "./routers/oder-router.js";
+import OrderRouter from "./routers/order-router.js";
 import ProductRouter from "./routers/product-router.js";
 import UserRouter from "./routers/user-router.js";
 import { server_port } from "./utils/utils.js";
