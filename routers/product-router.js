@@ -7,11 +7,13 @@ import {
   getProductById,
   getProductsByPriceOver,
   getProductsByPriceUnder,
+  removeProduct,
 } from "../controllers/product-controller.js";
 
 const ProductRouter = Router();
 
 ProductRouter.post("/add", addProduct);
+ProductRouter.post("/delete", removeProduct);
 
 ProductRouter.get("/", getAllProducts);
 ProductRouter.get("/new", getNewProducts);
