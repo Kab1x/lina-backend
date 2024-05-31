@@ -13,7 +13,7 @@ import {
 const ProductRouter = Router();
 
 ProductRouter.post("/add", addProduct);
-ProductRouter.delete("/delete", removeProduct);
+ProductRouter.delete("/remove", removeProduct);
 
 ProductRouter.get("/", getAllProducts);
 ProductRouter.get("/new", getNewProducts);
