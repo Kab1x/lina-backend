@@ -64,12 +64,18 @@ export const createOrderCurrentCart = async (req, res) => {
     res.status(500).json({ message: "Error while creating order" });
   }
 };
-
-export const createOrderForCart = async (req, res) => {
+export const createOrderByCartId = async (req, res) => {
   try {
-    const { shippingAddress, shippingPrice } = req.body;
+    const { shippingAddress } = req.body;
     const { id } = req.user;
     const { cartId } = req.params;
+
+    const shippingPrice = 500;
+
+    const user = await UserModel.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
     const cart = await CartModel.findById(cartId);
     if (!cart) {
@@ -95,8 +101,14 @@ export const createOrderForCart = async (req, res) => {
       const itemPrice = item.quantity * product.price;
       itemsPrice += itemPrice;
     }
-    const taxPrice = itemsPrice * 0.19;
-    const totalPrice = itemsPrice + taxPrice + shippingPrice;
+
+    console.log(`Items price: ${itemsPrice}`);
+    const taxPrice = (itemsPrice * 0.19).toFixed(2);
+    const totalPrice = (
+      parseFloat(itemsPrice) +
+      parseFloat(taxPrice) +
+      parseFloat(shippingPrice)
+    ).toFixed(2);
 
     const order = await OrderModel.create({
       userId: id,

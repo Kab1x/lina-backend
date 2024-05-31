@@ -1,5 +1,6 @@
 import Router from "express";
 import {
+  addProduct,
   getAllProducts,
   getFilteredProducts,
   getNewProducts,
@@ -9,6 +10,8 @@ import {
 } from "../controllers/product-controller.js";
 
 const ProductRouter = Router();
+
+ProductRouter.post("/add", addProduct);
 
 ProductRouter.get("/", getAllProducts);
 ProductRouter.get("/new", getNewProducts);

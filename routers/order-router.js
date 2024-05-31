@@ -1,8 +1,8 @@
 import { Router } from "express";
 
 import {
+  createOrderByCartId,
   createOrderCurrentCart,
-  createOrderForCart,
 } from "../controllers/order-controller.js";
 
 import { fetchUser } from "../middleware/user-middleware.js";
@@ -16,6 +16,6 @@ OrderRouter.post("/create", fetchUser, createOrderCurrentCart);
 
 // Route pour créer une commande avec un panier spécifique
 // Requête POST sur /create/:cartId avec le middleware fetchUser et le contrôleur createOrderForCart
-OrderRouter.post("/create/:cartId", fetchUser, createOrderForCart);
+OrderRouter.post("/create/:cartId", fetchUser, createOrderByCartId);
 
 export default OrderRouter;
